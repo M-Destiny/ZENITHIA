@@ -69,7 +69,7 @@ const Customizer = () => {
       //     'Content-Type': 'application/json'
       //   },
       // }
-      const response = await fetch('http://localhost:6969/api/v1/dalle', {
+      const response = await fetch('https://zenithia.onrender.com/api/v1/dalle', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
