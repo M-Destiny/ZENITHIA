@@ -36,7 +36,7 @@ const Customizer = () => {
           readFile={readFile}
         />
       case "aipicker":
-        return <AIPicker
+        return <AIPicker 
           prompt={prompt}
           setPrompt={setPrompt}
           generatingImg={generatingImg}
@@ -48,25 +48,22 @@ const Customizer = () => {
   }
 
   const handleSubmit = async (type) => {
-    if (!prompt) return alert("Please enter a prompt");
+    if(!prompt) return alert("Please enter a prompt");
 
     try {
       setGeneratingImg(true);
 
-      const response = await fetch('https://zenithia.onrender.com/api/v1/dalle', {
+      const response = await fetch('http://localhost:6969/api/v1/dalle', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           prompt,
-
         })
       })
-      console.log(prompt);
-      const data = await response.json();
-      console.log(data);
 
+      const data = await response.json();
 
       handleDecals(type, `data:image/png;base64,${data.photo}`)
     } catch (error) {
@@ -82,7 +79,7 @@ const Customizer = () => {
 
     state[decalType.stateProperty] = result;
 
-    if (!activeFilterTab[decalType.filterTab]) {
+    if(!activeFilterTab[decalType.filterTab]) {
       handleActiveFilterTab(decalType.filterTab)
     }
   }
@@ -90,10 +87,10 @@ const Customizer = () => {
   const handleActiveFilterTab = (tabName) => {
     switch (tabName) {
       case "logoShirt":
-        state.isLogoTexture = !activeFilterTab[tabName];
+          state.isLogoTexture = !activeFilterTab[tabName];
         break;
       case "stylishShirt":
-        state.isFullTexture = !activeFilterTab[tabName];
+          state.isFullTexture = !activeFilterTab[tabName];
         break;
       default:
         state.isLogoTexture = true;
@@ -131,7 +128,7 @@ const Customizer = () => {
             <div className="flex items-center min-h-screen">
               <div className="editortabs-container tabs">
                 {EditorTabs.map((tab) => (
-                  <Tab
+                  <Tab 
                     key={tab.name}
                     tab={tab}
                     handleClick={() => setActiveEditorTab(tab.name)}
@@ -147,7 +144,7 @@ const Customizer = () => {
             className="absolute z-10 top-5 right-5"
             {...fadeAnimation}
           >
-            <CustomButton
+            <CustomButton 
               type="filled"
               title="Go Back"
               handleClick={() => state.intro = true}
