@@ -53,7 +53,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-      const response = await fetch('https://zenithia.onrender.com/api/v1/dalle', {  
+      const response = await fetch('https://zen-b5q4.onrender.com/api/v1/dalle', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
